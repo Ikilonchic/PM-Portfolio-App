@@ -1,16 +1,25 @@
 .wrapper {
   display: flex;
+
+  width: 100%;
+
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   text-align: left;
 }
 
 .inner {
   max-width: 450px;
-  margin: auto;
+  margin: 0 auto 1rem;
   background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 40px 55px 45px 55px;
+  padding: 40px 55px;
   border-radius: 15px;
   transition: all .3s;
+
+  @media only screen and (max-width: 350px) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 }

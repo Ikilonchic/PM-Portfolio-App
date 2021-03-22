@@ -28,25 +28,21 @@ const SchoolForm = (props) => {
   };
 
   return <Container>
-    <Row>
-      <Col>
-        <ButtonGroup>
-          <Button onClick={props.prevStep}>
-            Prev
-          </Button>
-          <Button onClick={props.final}>
-            Final
-          </Button>
-        </ButtonGroup>
-        {isAddNewItem ? <NewItemForm
-          initialValues={emptyWork}
-          onSave={saveItem}
-          onCancel={cancelItem} /> : <Button onClick={addItem}>Add new item</Button>}
-        {workArray.map((item, id) => {
-          return <Item key={id} value={item}/>
-        })}
-      </Col>
-    </Row>
+    <ButtonGroup>
+      <Button onClick={props.prevStep}>
+        Prev
+      </Button>
+      <Button onClick={props.final}>
+        Final
+      </Button>
+    </ButtonGroup>
+    {isAddNewItem ? <NewItemForm
+      initialValues={emptyWork}
+      onSave={saveItem}
+      onCancel={cancelItem} /> : <Button onClick={addItem} block>Add new item</Button>}
+    {workArray.map((item, id) => {
+      return <Item key={id} value={item}/>
+    })}
   </Container>;
 }
 

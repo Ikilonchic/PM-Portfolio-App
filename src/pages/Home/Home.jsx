@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
 import selector from './Home.selector';
-import styles from './Home.module.scss';
+
 import PageHeader from '../../components/PageHeader/PageHeader';
 import PortfolioTable from '../../components/PortfolioTable/PortfolioTable';
 
@@ -14,7 +14,7 @@ const Home = (props) => {
 
   const redirectToCreate = () => history.push(`portfolio/create`);
 
-  return <div className={styles.Container}>
+  return <>
     <PageHeader>
       <Button onClick={redirectToCreate}>
         Create new
@@ -24,7 +24,7 @@ const Home = (props) => {
       id: elem.id,
       title: `${elem.contacts.firstName} ${elem.contacts.secondName}`
     }))} />
-  </div>;
+  </>;
 };
 
 export default Home;
