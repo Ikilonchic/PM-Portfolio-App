@@ -15,7 +15,9 @@ const Portfolio = (props) => {
     <PageHeader>
       <BackButton />
     </PageHeader>
-    {portfolio ? <PortfolioInfo contacts={portfolio.contacts} school={portfolio.school} work={portfolio.work} /> : 'Not found'}
+    {portfolio ? <PortfolioInfo contacts={portfolio.contacts} school={portfolio.school} work={portfolio.work} /> : <div className='mr-3 ml-3'>
+      Not found
+    </div>}
   </>;
 };
 
