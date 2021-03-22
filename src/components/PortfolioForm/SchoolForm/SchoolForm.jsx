@@ -34,6 +34,7 @@ const SchoolForm = (props) => {
   };
 
   return <Container>
+    <h1>School</h1>
     <ButtonToolbar>
       <ButtonGroup className="mr-2">
         <Button onClick={props.prevStep}>

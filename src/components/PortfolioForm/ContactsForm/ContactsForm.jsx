@@ -46,6 +46,7 @@ const ContactsForm = (props) => {
       handleBlur,
       isValid,
     }) => <Form>
+      <h1>Contacts</h1>
       <Form.Group>
         <Form.Label>First name</Form.Label>
         <Form.Control
