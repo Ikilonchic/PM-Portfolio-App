@@ -1,0 +1,16 @@
+.container {
+  max-width: 100%;
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+  background-color: beige;
+}
+
+.title {
+  max-width: 100%;
+
+  font-size: 2em;
+  font-weight: bold;
+  text-overflow: ellipsis;
+}
