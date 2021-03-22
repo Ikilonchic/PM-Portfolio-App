@@ -10,14 +10,26 @@ const propTypes = {
   school: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     specialty: PropTypes.string,
-    startDate: PropTypes.instanceOf(Date),
-    endDate: PropTypes.instanceOf(Date),
+    startDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date)
+    ]),
+    endDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date)
+    ]),
   })).isRequired,
   work: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     position: PropTypes.string,
-    startDate: PropTypes.instanceOf(Date),
-    endDate: PropTypes.instanceOf(Date),
+    startDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date)
+    ]),
+    endDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date)
+    ]),
   })).isRequired,
 };
 
@@ -37,9 +49,9 @@ const Portfolio = (props) => {
         <Col className='mb-3'>
           <h2>School</h2>
           <ListGroup>
-            {props.school.map(elem => <ListGroup.Item>
-              <ListGroup variant="flush">
-                {Object.values(elem).map(entry => <ListGroup.Item>
+            {props.school.map((elem, index) => <ListGroup.Item>
+              <ListGroup key={index} variant="flush">
+                {Object.values(elem).map((entry, index) => <ListGroup.Item key={index}>
                   {entry}
                 </ListGroup.Item>)}
               </ListGroup>
@@ -49,9 +61,9 @@ const Portfolio = (props) => {
         <Col>
           <h2>Work</h2>
           <ListGroup>
-            {props.work.map(elem => <ListGroup.Item>
-              <ListGroup variant="flush">
-                {Object.values(elem).map(entry => <ListGroup.Item>
+            {props.work.map((elem, index) => <ListGroup.Item>
+              <ListGroup key={index} variant="flush">
+                {Object.values(elem).map((entry, index) => <ListGroup.Item key={index}>
                   {entry}
                 </ListGroup.Item>)}
               </ListGroup>

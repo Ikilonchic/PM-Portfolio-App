@@ -6,12 +6,8 @@ import Item from './Item/Item';
 
 const propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-    title: PropTypes.string,
-  })).isRequire,
+    title: PropTypes.string.isRequired,
+  })),
 };
 
 const PortfolioTable = (props) => {

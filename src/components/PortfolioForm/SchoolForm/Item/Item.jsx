@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 
 const Item = (props) => {
-  return <Card Card className='mt-3'>
+  return <Card className='mt-3'>
     <Card.Body>
       <Card.Title>
         Name
