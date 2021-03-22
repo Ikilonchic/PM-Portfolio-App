@@ -18,7 +18,12 @@ const NewItemForm = ({ initialValues, onSave, onCancel }) => {
     }
 
     if (!values.endDate) {
-      errors.endDate = 'Start date is required';
+      errors.endDate = 'End date is required';
+    }
+
+
+    if (new Date(values.startDate) > new Date(values.endDate)) {
+      errors.date = 'Start date must be less than end date';
     }
 
     return errors;
@@ -38,8 +43,7 @@ const NewItemForm = ({ initialValues, onSave, onCancel }) => {
       handleChange,
       handleBlur,
       isValid,
-      dirty,
-    }) => <Form>
+    }) => <Form className='mt-3'>
       <Form.Group>
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -91,12 +95,13 @@ const NewItemForm = ({ initialValues, onSave, onCancel }) => {
           type='date'
           name='endDate'
           placeholder='Enter date...'
-          isInvalid={errors.endDate && touched.endDate}
+          isInvalid={touched.endDate && (errors.endDate || errors.date)}
           value={values.endDate}
           onChange={handleChange}
           onBlur={handleBlur} />
-        {errors.endDate && touched.endDate ? <Form.Control.Feedback type='invalid'>
-          <ErrorMessage name='endDate' />
+        {touched.endDate ? <Form.Control.Feedback type='invalid'>
+          {errors.endDate}
+          {errors.date}
         </Form.Control.Feedback> : null}
       </Form.Group>
 
@@ -109,7 +114,7 @@ const NewItemForm = ({ initialValues, onSave, onCancel }) => {
         <Button
           variant='primary'
           type='button'
-          disabled={!(isValid && dirty)}
+          disabled={!isValid}
           onClick={handleSubmit}
         >Save</Button>
       </ButtonGroup>

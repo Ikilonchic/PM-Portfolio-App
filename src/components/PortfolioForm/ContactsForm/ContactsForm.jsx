@@ -45,7 +45,6 @@ const ContactsForm = (props) => {
       handleChange,
       handleBlur,
       isValid,
-      dirty,
     }) => <Form>
       <Form.Group>
         <Form.Label>First name</Form.Label>
@@ -113,7 +112,7 @@ const ContactsForm = (props) => {
       <Button
         variant='primary'
         type='button'
-        disabled={!(isValid && dirty)}
+        disabled={!isValid}
         onClick={handleSubmit}
       >Next</Button>
     </Form>}

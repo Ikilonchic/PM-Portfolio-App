@@ -8,9 +8,7 @@ const propTypes = {
 const Item = (props) => {
   return <Card onClick={props.onClick}>
     <Card.Body>
-      <Card.Title>
-        {props.title}
-      </Card.Title>
+      {props.title}
     </Card.Body>
   </Card>;
 };

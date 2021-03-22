@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Button, ButtonGroup, Container, Col, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, ButtonToolbar, Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux";
 
-import { updateNewPortfolioSchool, updateNewPortfolioWork } from "../../../ducks/portfolio";
+import { updateNewPortfolioWork } from "../../../ducks/portfolio";
 import emptyWork from '../../../data/empty_work.json';
 import selector from './WorkForm.selector';
 
@@ -28,18 +28,23 @@ const SchoolForm = (props) => {
   };
 
   return <Container>
-    <ButtonGroup>
-      <Button onClick={props.prevStep}>
-        Prev
-      </Button>
-      <Button onClick={props.final}>
-        Final
-      </Button>
-    </ButtonGroup>
-    {isAddNewItem ? <NewItemForm
+    <ButtonToolbar>
+      <ButtonGroup className="mr-2">
+        <Button onClick={props.prevStep}>
+          Prev
+        </Button>
+        <Button onClick={props.final} disabled={!workArray.length}>
+          Final
+        </Button>
+      </ButtonGroup>
+      {!isAddNewItem && <ButtonGroup>
+        <Button onClick={addItem}>Add new item</Button>
+      </ButtonGroup>}
+    </ButtonToolbar>
+    {isAddNewItem && <NewItemForm
       initialValues={emptyWork}
       onSave={saveItem}
-      onCancel={cancelItem} /> : <Button onClick={addItem} block>Add new item</Button>}
+      onCancel={cancelItem} />}
     {workArray.map((item, id) => {
       return <Item key={id} value={item}/>
     })}

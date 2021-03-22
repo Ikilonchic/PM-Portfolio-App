@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, ButtonGroup, Container, Col, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, ButtonToolbar, Container } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux";
 
 import { updateNewPortfolioSchool } from "../../../ducks/portfolio";
@@ -34,25 +34,26 @@ const SchoolForm = (props) => {
   };
 
   return <Container>
-    <Row>
-      <Col>
-        <ButtonGroup>
-          <Button onClick={props.prevStep}>
-            Prev
-          </Button>
-          <Button onClick={onSubmit} disabled={!schoolArray.length}>
-            Next
-          </Button>
-        </ButtonGroup>
-        {isAddNewItem ? <NewItemForm
-          initialValues={emptySchool}
-          onSave={saveItem}
-          onCancel={cancelItem} /> : <Button onClick={addItem}>Add new item</Button>}
-        {schoolArray.map((item, id) => {
-          return <Item key={id} value={item}/>
-        })}
-      </Col>
-    </Row>
+    <ButtonToolbar>
+      <ButtonGroup className="mr-2">
+        <Button onClick={props.prevStep}>
+          Prev
+        </Button>
+        <Button onClick={onSubmit} disabled={!schoolArray.length}>
+          Next
+        </Button>
+      </ButtonGroup>
+      {!isAddNewItem && <ButtonGroup>
+        <Button onClick={addItem}>Add new item</Button>
+      </ButtonGroup>}
+    </ButtonToolbar>
+    {isAddNewItem && <NewItemForm
+      initialValues={emptySchool}
+      onSave={saveItem}
+      onCancel={cancelItem} />}
+    {schoolArray.map((item, id) => {
+      return <Item key={id} value={item}/>
+    })}
   </Container>;
 }
 

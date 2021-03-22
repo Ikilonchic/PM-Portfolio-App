@@ -19,7 +19,7 @@ const PortfolioTable = (props) => {
 
   const createRedirectById = (id) => () => history.push(`portfolio/${id}`);
 
-  return <CardColumns>
+  return <CardColumns className='mr-3 ml-3'>
     {props.items.map((elem, index) => <Item key={index} title={elem.title} onClick={createRedirectById(index)}/>)}
   </CardColumns>;
 };
